@@ -70,7 +70,7 @@ const TOOLS = [
   // ── Android-Browsers ──────────────────────────────────────────────────────
   { cat: 'Android-Browsers', name: 'Firefox', desc: 'Browser with the best ad blocking. After installing, make sure to go to extensions and add uBlock Origin and enable it in private browsing mode.', recommended: true, url: 'https://www.firefox.com/en-US/' },
 
-  { cat: 'Android-Browsers', name: 'Cromite', desc: 'Bromite successor. Chromium with built-in ad blocking and Extention support.', recommended: true, url: 'https://github.com/uazo/cromite/' },
+  { cat: 'Android-Browsers', name: 'Cromite', desc: 'Bromite successor. Chromium with built-in ad blocking and Extention support.', notRecommended: true, url: 'https://github.com/uazo/cromite/' },
 
   { cat: 'Android-Browsers', name: 'Mull', desc: 'Privacy-hardened Firefox fork for Android. No telemetry.', recommended: true, url: 'https://f-droid.org/packages/org.mozilla.fennec_fdroid/' },
 
