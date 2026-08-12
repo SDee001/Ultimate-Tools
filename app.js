@@ -311,6 +311,19 @@ function initMobile() {
     catGrid.appendChild(btn);
   }
 
+  // Push a history entry when the picker is the base state
+  // so the very first back gesture has somewhere to return to.
+  history.replaceState({ view: 'picker' }, '');
+
+  // Listen for browser / gesture back
+  window.addEventListener('popstate', (e) => {
+    if (e.state && e.state.view === 'picker') {
+      reel.classList.remove('active');
+      picker.classList.add('active');
+      reelTrack.innerHTML = '';
+    }
+  });
+
   // Open reel for a category
   function openReel(cat, tools) {
     reelCat.textContent = cat;
@@ -366,17 +379,17 @@ function initMobile() {
       }
     }, { passive: true });
 
-    // Show reel screen
+    // Show reel screen and push a history entry so the
+    // back gesture / button returns here rather than leaving the page.
+    history.pushState({ view: 'reel', cat }, '');
     picker.classList.remove('active');
     reel.classList.add('active');
     reelTrack.scrollTop = 0;
   }
 
-  // Back to picker
+  // Back button — mirrors what popstate does
   backBtn.addEventListener('click', () => {
-    reel.classList.remove('active');
-    picker.classList.add('active');
-    reelTrack.innerHTML = '';
+    history.back(); // triggers popstate → handler above cleans up
   });
 }
 
